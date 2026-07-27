@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>이희창 — Portfolio</title>
 <meta name="description" content="IT 수험서 기획·편집자, CBT/채점서비스 기획 및 개발 — 이희창 포트폴리오">
+<meta property="og:title" content="이희창 — Editor & Service Builder">
+<meta property="og:description" content="책을 만들고, 그 책을 산 독자가 실제 시험처럼 연습하는 서비스까지 만듭니다.">
+<meta property="og:url" content="https://hclee-source.github.io/portfolio/">
+<meta property="og:image" content="https://hclee-source.github.io/portfolio/img/cbt-3.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23131312'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23ffffff' font-family='serif' font-weight='700'%3E희%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,7 +56,7 @@
   .hero-meta span,.hero-meta a{border:1px solid var(--border); padding:7px 15px; border-radius:999px;}
   .hero-meta a{color:var(--accent); text-decoration:none; font-weight:600;}
   .hero-meta a:hover{border-color:var(--accent);}
-  .hero-photo{position:relative;}
+  .hero-photo{position:relative; isolation:isolate;}
   .hero-photo img{width:100%; aspect-ratio:4/5; object-fit:cover; object-position:top; display:block; border-radius:4px; filter:saturate(.94);}
   .hero-photo::after{content:""; position:absolute; inset:0; transform:translate(16px,16px); border:1px solid var(--accent); border-radius:4px; z-index:-1;}
 
@@ -283,7 +289,7 @@
           <div class="tl-desc">
             <ul>
               <li>ADsP, SQLD, 빅데이터분석기사(필기), AICE ASSOCIATE, 리눅스마스터 2급, ITQ OA Master 등 6종 출간</li>
-              <li>계약·기획 단계 포함 20종 이상의 IT 자격증 수험서 라인업 동시 관리</li>
+              <li>계약·기획 단계 포함 20종 이상의 IT 자격증 수험서 라인업을 팀과 함께 관리 — 표준 편집 프로세스 문서화 담당</li>
               <li>도서 구매자 대상 CBT·채점서비스 웹 플랫폼 기획 및 개발</li>
             </ul>
           </div>
@@ -361,7 +367,7 @@
         </div>
       </a>
       <a class="pcard" href="#p-datasci">
-        <div class="pcover"><img src="img/datasci-4.png" alt="데이터 과학 교과서 원고 편집" loading="lazy"></div>
+        <div class="pcover"><img src="img/datasci-4.jpg" alt="데이터 과학 교과서 원고 편집" loading="lazy"></div>
         <div class="pbody">
           <p class="ptitle"><span class="pnum">No. 04</span>고등학교 〈데이터 과학〉 교과서</p>
           <div class="tagrow"><span class="tag">책임 편집</span><span class="tag">기여도 100%</span></div>
@@ -377,7 +383,7 @@
         </div>
       </a>
       <a class="pcard" href="#p-silgwa">
-        <div class="pcover"><img src="img/silgwa-1.png" alt="초등 실과 교과서 지면" loading="lazy"></div>
+        <div class="pcover"><img src="img/silgwa-1.jpg" alt="초등 실과 교과서 지면" loading="lazy"></div>
         <div class="pbody">
           <p class="ptitle"><span class="pnum">No. 06</span>초등학교 실과(5~6학년) 정보 단원</p>
           <div class="tagrow"><span class="tag">교육과정 연구</span><span class="tag">편집 기획</span></div>
@@ -403,7 +409,7 @@
   </section>
 
   <section id="details">
-    <h2><span class="num">05</span>프로젝트 상세</h2>
+    <h2>프로젝트 상세</h2>
 
     <div class="detail" id="p-cbt">
       <h3>CBT·채점서비스 — 기획부터 개발까지</h3>
@@ -478,7 +484,7 @@
       <h4>Result</h4>
       <div class="highlight">출간 6종 외에 빅데이터분석기사(실기), 컴활 1·2급, 정보처리기사, 정보보안기사,
       네트워크관리사 1·2급, 워드프로세서, 프로그래밍기능사 등 계약·기획 단계 타이틀 포함
-      <b>전체 라인업 20종 이상 동시 관리</b>.</div>
+      팀과 함께 <b>전체 라인업 20종 이상을 운영</b> — 그 기반이 되는 표준 프로세스를 직접 문서화.</div>
       <img src="img/books-1.png" alt="수험서 편집 진행 가이드 문서" loading="lazy">
       <p class="imgcap">직접 문서화한 수험서 편집 진행 가이드 — 기획·원고·조판대조·1~3교·리파인 7단계별 체크리스트</p>
       <img src="img/books-2.png" alt="전체 라인업 연간 진행 현황표 (도서명·담당자 비공개 처리)" loading="lazy">
@@ -503,11 +509,11 @@
         <li>교과서 소개 PT·홍보 자료 제작, 집필진 관리</li>
       </ul>
       <img src="img/datasci-1.png" alt="교육과정 분석 및 교과서 개발 과정 정리" loading="lazy">
-      <img src="img/datasci-2.png" alt="내지 디자인 발주를 위한 교과서 체제 문서" loading="lazy">
+      <img src="img/datasci-2.jpg" alt="내지 디자인 발주를 위한 교과서 체제 문서" loading="lazy">
       <p class="imgcap">내지 디자인 발주를 위해 직접 작성한 교과서 체제 문서</p>
       <img src="img/datasci-3.png" alt="단원 편제 및 집필 세목(안)" loading="lazy">
       <p class="imgcap">단원 편제·집필 세목(안) 작성 후 집필진과 논의</p>
-      <img src="img/datasci-4.png" alt="원고 편집 및 삽화 발주 작업물" loading="lazy">
+      <img src="img/datasci-4.jpg" alt="원고 편집 및 삽화 발주 작업물" loading="lazy">
       <p class="imgcap">원고 편집 및 삽화 발주</p>
       <h4>Result</h4>
       <div class="highlight">집필·검토 단계에서 구축한 <b>학습 흐름 관리 문서</b>는 이후 초등 실과 교과서
@@ -558,7 +564,7 @@
       <div class="highlight">고등학교 인정 교과서에 이어 초등학교 <b>검정 교과서</b>까지, 서로 다른
       학교급·심사 체계의 도서를 모두 경험. 성취기준을 교육학적 관점에서 분석·해석하는 역량과
       다수 인원이 참여하는 개발 협업 경험을 쌓음.</div>
-      <img src="img/silgwa-1.png" alt="교과서 내지 교정 지면 — 편집 코멘트가 달린 검토 화면" loading="lazy">
+      <img src="img/silgwa-1.jpg" alt="교과서 내지 교정 지면 — 편집 코멘트가 달린 검토 화면" loading="lazy">
       <p class="imgcap">교과서 내지 교정 지면 — 도입 구성·용어 설명 방식 등 편집 방향을 코멘트로 조율</p>
       <img src="img/silgwa-2.png" alt="초등학교 실과 5학년 편집 배열표" loading="lazy">
       <p class="imgcap">직접 관리한 편집 배열표 — 단원별 쪽수·차시·성취기준을 한눈에 관리</p>
@@ -605,7 +611,7 @@
   </section>
 
   <section id="skills">
-    <h2><span class="num">06</span>How I Work</h2>
+    <h2><span class="num">05</span>How I Work</h2>
     <ul>
       <li>데이터를 기반으로 한 합리적인 의사 결정을 내립니다.</li>
       <li>갑작스러운 변동 사항이 생겨도 유연하게 대처합니다.</li>
