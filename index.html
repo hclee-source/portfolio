@@ -38,6 +38,10 @@
   .hero-meta{display:flex; gap:18px; flex-wrap:wrap; margin-top:26px; font-size:.92rem; color:var(--text-dim);}
   .hero-meta a{color:var(--accent); text-decoration:none; font-weight:600;}
   .hero-meta a:hover{text-decoration:underline;}
+  .hero-flex{display:flex; gap:40px; align-items:flex-start;}
+  .hero-text{flex:1; min-width:0;}
+  .hero-photo{flex:0 0 auto;}
+  .hero-photo img{width:168px; height:168px; object-fit:cover; object-position:top; border-radius:24px; border:1px solid var(--border); box-shadow:var(--shadow); display:block;}
 
   nav.toc{position:sticky; top:0; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--border); z-index:10;}
   nav.toc .wrap{display:flex; gap:22px; padding:14px 24px; overflow-x:auto; font-size:.88rem;}
@@ -117,6 +121,8 @@
   @media(max-width:640px){
     header.hero{padding:60px 0 40px;}
     h1{font-size:1.9rem;}
+    .hero-flex{flex-direction:column-reverse; gap:20px;}
+    .hero-photo img{width:120px; height:120px;}
     .about-grid{grid-template-columns:1fr;}
     .tl-item{grid-template-columns:1fr; gap:6px;}
   }
@@ -126,19 +132,26 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="kicker">Portfolio</div>
-    <h1>이희창</h1>
-    <p class="role">책을 만들고, 그 책을 산 독자가 실제 시험처럼 연습하는 서비스까지 만듭니다.</p>
-    <p class="pitch">
-      통계학을 전공하고 출판 현장에 들어와, 통계·수학 전공서에서 교과서로, 교과서에서
-      수험서로 영역을 넓혀 온 5년 차 편집자입니다. 신설 교과목 교과서의 책임 편집부터
-      독자들이 쓰는 온라인 학습 서비스의 기획·개발까지 — 만드는 대상이 무엇이든,
-      독자에게 필요한 것을 찾아 끝까지 검증해서 내놓는 방식으로 일합니다.
-    </p>
-    <div class="hero-meta">
-      <span>5년+ 경력</span>
-      <span>동국대학교 응용통계학과</span>
-      <a href="mailto:hclee9@kakao.com">hclee9@kakao.com</a>
+    <div class="hero-flex">
+      <div class="hero-text">
+        <div class="kicker">Portfolio</div>
+        <h1>이희창</h1>
+        <p class="role">책을 만들고, 그 책을 산 독자가 실제 시험처럼 연습하는 서비스까지 만듭니다.</p>
+        <p class="pitch">
+          통계학을 전공하고 출판 현장에 들어와, 통계·수학 전공서에서 교과서로, 교과서에서
+          수험서로 영역을 넓혀 온 5년 차 편집자입니다. 신설 교과목 교과서의 책임 편집부터
+          독자들이 쓰는 온라인 학습 서비스의 기획·개발까지 — 만드는 대상이 무엇이든,
+          독자에게 필요한 것을 찾아 끝까지 검증해서 내놓는 방식으로 일합니다.
+        </p>
+        <div class="hero-meta">
+          <span>5년+ 경력</span>
+          <span>동국대학교 응용통계학과</span>
+          <a href="mailto:hclee9@kakao.com">hclee9@kakao.com</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="img/profile.jpg" alt="이희창 프로필 사진">
+      </div>
     </div>
   </div>
 </header>
