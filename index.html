@@ -42,6 +42,7 @@
   .brand{font-family:var(--serif); font-weight:700; font-size:1.06rem; color:var(--text); text-decoration:none; margin-right:auto; letter-spacing:-.01em;}
   nav.toc a{color:var(--text-dim); text-decoration:none; white-space:nowrap; font-size:.85rem; font-weight:500;}
   nav.toc a:hover{color:var(--text);}
+  nav.toc a.active{color:var(--text); box-shadow:inset 0 -2px 0 var(--accent); padding-bottom:2px;}
   nav.toc a.cta-link{color:var(--bg); background:var(--text); padding:8px 18px; border-radius:999px; font-weight:600; font-size:.8rem;}
   nav.toc a.cta-link:hover{background:var(--accent); color:#fff;}
 
@@ -343,7 +344,7 @@
     <h2><span class="num">04</span>Career Portfolio</h2>
     <div class="gallery">
       <a class="pcard" href="#p-cbt">
-        <div class="pcover"><img src="img/cbt-3.png" alt="CBT 시험 개요 화면" loading="lazy"></div>
+        <div class="pcover"><img src="img/cover-cbt.jpg" alt="CBT 시험 개요 화면" loading="lazy"></div>
         <div class="pbody">
           <p class="ptitle"><span class="pnum">No. 01</span>CBT·채점서비스 — 기획부터 개발까지</p>
           <div class="tagrow"><span class="tag">기획</span><span class="tag">개발</span><span class="tag">기여도 100%</span></div>
@@ -351,7 +352,7 @@
         </div>
       </a>
       <a class="pcard" href="#p-aice">
-        <div class="pcover"><img src="img/aice-2.png" alt="AICE 코딩 실습 응시 화면" loading="lazy"></div>
+        <div class="pcover"><img src="img/cover-aice.jpg" alt="AICE 코딩 실습 응시 화면" loading="lazy"></div>
         <div class="pbody">
           <p class="ptitle"><span class="pnum">No. 02</span>AICE 자동 채점기 — 정확도 0% → 90%</p>
           <div class="tagrow"><span class="tag">QA</span><span class="tag">문제 해결</span></div>
@@ -359,7 +360,7 @@
         </div>
       </a>
       <a class="pcard" href="#p-books">
-        <div class="pcover"><img src="img/books-1.png" alt="수험서 편집 진행 가이드 문서" loading="lazy"></div>
+        <div class="pcover"><img src="img/cover-books.jpg" alt="수험서 편집 진행 가이드 문서" loading="lazy"></div>
         <div class="pbody">
           <p class="ptitle"><span class="pnum">No. 03</span>IT 수험서 6종 출간 + 20종 파이프라인</p>
           <div class="tagrow"><span class="tag">책임 편집</span><span class="tag">프로세스 설계</span></div>
@@ -367,7 +368,7 @@
         </div>
       </a>
       <a class="pcard" href="#p-datasci">
-        <div class="pcover"><img src="img/datasci-4.jpg" alt="데이터 과학 교과서 원고 편집" loading="lazy"></div>
+        <div class="pcover"><img src="img/cover-datasci.jpg" alt="데이터 과학 교과서 원고 편집" loading="lazy"></div>
         <div class="pbody">
           <p class="ptitle"><span class="pnum">No. 04</span>고등학교 〈데이터 과학〉 교과서</p>
           <div class="tagrow"><span class="tag">책임 편집</span><span class="tag">기여도 100%</span></div>
@@ -375,7 +376,7 @@
         </div>
       </a>
       <a class="pcard" href="#p-brightics">
-        <div class="pcover"><img src="img/brightics-2.png" alt="Brightics 단행본 체제·초안" loading="lazy"></div>
+        <div class="pcover"><img src="img/cover-brightics.jpg" alt="Brightics 단행본 체제·초안" loading="lazy"></div>
         <div class="pbody">
           <p class="ptitle"><span class="pnum">No. 05</span>Brightics Studio와 함께 배우는 데이터 과학</p>
           <div class="tagrow"><span class="tag">편집 기획</span><span class="tag">외주 관리</span></div>
@@ -383,7 +384,7 @@
         </div>
       </a>
       <a class="pcard" href="#p-silgwa">
-        <div class="pcover"><img src="img/silgwa-1.jpg" alt="초등 실과 교과서 지면" loading="lazy"></div>
+        <div class="pcover"><img src="img/cover-silgwa.jpg" alt="초등 실과 교과서 지면" loading="lazy"></div>
         <div class="pbody">
           <p class="ptitle"><span class="pnum">No. 06</span>초등학교 실과(5~6학년) 정보 단원</p>
           <div class="tagrow"><span class="tag">교육과정 연구</span><span class="tag">편집 기획</span></div>
@@ -391,7 +392,7 @@
         </div>
       </a>
       <a class="pcard" href="#p-gongmo">
-        <div class="pcover"><img src="img/gongmo-2.png" alt="공모 제안서 페이지" loading="lazy"></div>
+        <div class="pcover"><img src="img/cover-gongmo.jpg" alt="공모 제안서 페이지" loading="lazy"></div>
         <div class="pbody">
           <p class="ptitle"><span class="pnum">No. 07</span>교실혁명 선도교사 연수 수행기관 공모</p>
           <div class="tagrow"><span class="tag">공공 사업 제안서</span><span class="tag">기여도 40%</span></div>
@@ -680,6 +681,23 @@ document.documentElement.classList.add('js');
     entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:.12});
   targets.forEach(function(el){ io.observe(el); });
+})();
+</script>
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a[href^="#"]'))
+    .filter(function(a){ return a.getAttribute('href').length > 1; });
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var secs = Object.keys(map).map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  function onScroll(){
+    var y = window.scrollY + window.innerHeight * 0.35;
+    var current = null;
+    secs.forEach(function(sec){ if(sec.offsetTop <= y) current = sec.id; });
+    links.forEach(function(a){ a.classList.toggle('active', current !== null && a.getAttribute('href') === '#'+current); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
 })();
 </script>
 </body>
