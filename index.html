@@ -33,7 +33,7 @@
   body{margin:0; background:var(--bg); color:var(--text);
     font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
     line-height:1.75; -webkit-font-smoothing:antialiased;}
-  h1,h2,.role,.callout b,.pcover-text,.ptitle,.detail h3,.tl-org,.stat b{font-family:var(--serif);}
+  h1,h2,.role,.callout b,.pcover-text,.ptitle,.detail h3,.tl-org,.stat b{font-family:var(--serif); word-break:keep-all;}
   .wrap{max-width:1060px; margin:0 auto; padding:0 28px;}
 
   /* nav */
@@ -76,7 +76,7 @@
   /* keyword — 3 feature columns */
   .callouts{display:grid; grid-template-columns:repeat(3,1fr); gap:44px;}
   .callout{border-top:2px solid var(--text); padding:24px 0 0; font-size:.93rem; color:var(--text-dim);}
-  .callout b{display:block; margin-bottom:10px; font-size:1.14rem; color:var(--text); font-weight:600; line-height:1.5;}
+  .callout b{display:block; margin-bottom:10px; font-size:1.14rem; color:var(--text); font-weight:600; line-height:1.5; word-break:keep-all;}
 
   /* about grid */
   .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
@@ -238,19 +238,19 @@
   <section id="keyword">
     <h2><span class="num">01</span>Keyword</h2>
     <div class="callouts">
-    <div class="callout"><div><b>입사 7개월 — 책 6종 출간, CBT 서비스 런칭</b>
+    <div class="callout"><div><b>입사 7개월 — 책 6종 출간,<br>CBT 서비스 런칭</b>
       골든래빗 입사 7개월 만에 IT 자격증 수험서 6종을 기획부터 인쇄까지 진행해 출간했고,
       같은 기간 그 책의 독자들이 쓰는 CBT·자동 채점 서비스를 기획해 직접 개발했습니다.
       개발 경험 없이 시작했지만, "독자에게 필요한가"를 기준으로 삼으면
       편집과 개발 사이에 선을 그을 이유가 없었습니다.</div>
     </div>
-    <div class="callout"><div><b>채점 정확도 0% → 90%, 원인은 코드 단위로 추적</b>
+    <div class="callout"><div><b>채점 정확도 0% → 90%,<br>원인은 코드 단위로 추적</b>
       전 문항이 0점 처리되는 자동 채점기를 보고 "이상하다"에서 멈추지 않았습니다.
       파일의 셀 구조를 하나하나 분석해 버그 6건을 규명하고, 우선순위 로드맵을 세워
       실제 서비스에 반영했습니다. 원고를 여러 교(校)에 걸쳐 검수하던 편집자의 습관은
       코드와 데이터 앞에서도 똑같이 동작합니다.</div>
     </div>
-    <div class="callout"><div><b>협업의 기준은 기억이 아니라 문서 — 작업 시간 15% 단축</b>
+    <div class="callout"><div><b>협업의 기준은 기억이 아니라 문서 —<br>작업 시간 15% 단축</b>
       집필진·디자이너·검토진이 동시에 참여하는 교과서 프로젝트에서 업무 요청과 피드백을
       문서로 남겨 혼선을 막았고, 반복되는 수정 사항을 FAQ로 정리해 작업 시간을 15% 이상
       줄였습니다. 지금은 팀이 20종이 넘는 수험서 라인업을 함께 굴릴 수 있도록, 기획부터
