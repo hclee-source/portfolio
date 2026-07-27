@@ -3,13 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>이희창 — Editor & Builder</title>
+<title>이희창 — Portfolio</title>
 <meta name="description" content="IT 수험서 기획·편집자, CBT/채점서비스 기획 및 개발 — 이희창 포트폴리오">
 <style>
   :root{
     --bg:#fafaf9; --bg-elevated:#ffffff; --text:#1c1c1a; --text-dim:#5c5c58;
     --accent:#1d5c4f; --accent-soft:#e4efec; --border:#e6e4df; --card:#ffffff;
     --code-bg:#f2f1ec; --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
+    --cover1:linear-gradient(135deg,#1d5c4f,#3a8f7d);
+    --cover2:linear-gradient(135deg,#2b4a72,#4f7cb8);
+    --cover3:linear-gradient(135deg,#7d4a1d,#b8824f);
+    --cover4:linear-gradient(135deg,#5c1d3f,#8f3a6b);
   }
   @media (prefers-color-scheme: dark){
     :root{
@@ -25,12 +29,12 @@
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
     line-height:1.65; -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:820px; margin:0 auto; padding:0 24px;}
-  header.hero{padding:96px 0 64px; border-bottom:1px solid var(--border);}
+  .wrap{max-width:880px; margin:0 auto; padding:0 24px;}
+  header.hero{padding:88px 0 56px; border-bottom:1px solid var(--border);}
   .kicker{color:var(--accent); font-weight:600; font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px;}
   h1{font-size:2.4rem; margin:0 0 10px; letter-spacing:-0.02em;}
   .role{font-size:1.15rem; color:var(--text-dim); margin:0 0 22px;}
-  .pitch{font-size:1.05rem; max-width:620px; color:var(--text);}
+  .pitch{font-size:1.05rem; max-width:660px; color:var(--text);}
   .hero-meta{display:flex; gap:18px; flex-wrap:wrap; margin-top:26px; font-size:.92rem; color:var(--text-dim);}
   .hero-meta a{color:var(--accent); text-decoration:none; font-weight:600;}
   .hero-meta a:hover{text-decoration:underline;}
@@ -45,9 +49,45 @@
   h2{font-size:1.5rem; margin:0 0 28px; letter-spacing:-0.01em;}
   h2 .num{color:var(--accent); font-variant-numeric:tabular-nums; margin-right:10px; font-size:1rem;}
 
-  .lead-block{background:var(--accent-soft); border-radius:14px; padding:22px 24px; margin-bottom:32px; font-size:1.02rem;}
+  /* keyword callouts (notion-style) */
+  .callout{display:flex; gap:14px; background:var(--code-bg); border-radius:12px; padding:18px 20px; margin-bottom:14px; font-size:.96rem;}
+  .callout .ico{flex:0 0 auto; font-size:1.1rem;}
+  .callout b{display:block; margin-bottom:4px;}
 
-  .timeline{display:flex; flex-direction:column; gap:0;}
+  /* about grid */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .about-grid h3{margin:0 0 12px; font-size:1.05rem;}
+  .about-grid ul{margin:0; padding-left:2px; list-style:none; font-size:.93rem;}
+  .about-grid li{margin-bottom:8px;}
+  .about-grid .yr{display:inline-block; min-width:120px; color:var(--text-dim); font-size:.85rem; font-weight:600;}
+  .toolrow{display:flex; flex-wrap:wrap; gap:8px;}
+  .tool{font-size:.78rem; font-weight:600; background:var(--code-bg); padding:5px 12px; border-radius:8px;}
+
+  /* project gallery (notion-style cards) */
+  .gallery{display:grid; grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); gap:20px;}
+  .pcard{background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); text-decoration:none; color:var(--text); display:flex; flex-direction:column; transition:transform .15s ease;}
+  .pcard:hover{transform:translateY(-3px);}
+  .pcover{height:120px; display:flex; align-items:flex-end; padding:14px; color:#fff; font-weight:700; font-size:1.02rem; letter-spacing:-0.01em; text-shadow:0 1px 3px rgba(0,0,0,.35); background:var(--cover1);}
+  .pcover.c2{background:var(--cover2);} .pcover.c3{background:var(--cover3);} .pcover.c4{background:var(--cover4);}
+  .pbody{padding:14px 16px 16px;}
+  .pbody .tagrow{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px;}
+  .pbody .meta{font-size:.78rem; color:var(--text-dim);}
+  .tag{font-size:.7rem; font-weight:700; background:var(--accent-soft); color:var(--accent); padding:3px 9px; border-radius:20px; letter-spacing:.02em;}
+
+  /* project detail */
+  .detail{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:28px 28px 24px; box-shadow:var(--shadow); margin-bottom:26px; scroll-margin-top:70px;}
+  .detail h3{margin:0 0 4px; font-size:1.2rem;}
+  .detail .meta{font-size:.85rem; color:var(--text-dim); margin-bottom:14px;}
+  .detail h4{margin:18px 0 8px; font-size:.85rem; letter-spacing:.06em; text-transform:uppercase; color:var(--accent);}
+  .detail p{margin:0 0 10px; font-size:.95rem;}
+  .detail ul{margin:0 0 10px; padding-left:20px; font-size:.94rem;}
+  .detail li{margin-bottom:6px;}
+  .highlight{border-left:3px solid var(--accent); padding:14px 18px; background:var(--code-bg); border-radius:0 10px 10px 0; font-size:.93rem; margin:14px 0;}
+  .highlight b{color:var(--accent);}
+  .backtop{font-size:.82rem;}
+  .backtop a{color:var(--accent); text-decoration:none;}
+
+  .timeline{display:flex; flex-direction:column;}
   .tl-item{display:grid; grid-template-columns:120px 1fr; gap:20px; padding:22px 0; border-top:1px solid var(--border);}
   .tl-item:first-child{border-top:none;}
   .tl-date{color:var(--text-dim); font-size:.85rem; font-weight:600; padding-top:2px;}
@@ -58,27 +98,13 @@
   .tl-desc ul{margin:6px 0 0; padding-left:20px;}
   .tl-desc li{margin-bottom:4px;}
 
-  .card{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:28px 28px 30px; box-shadow:var(--shadow); margin-bottom:22px;}
-  .card h3{margin:0 0 6px; font-size:1.18rem;}
-  .card .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 16px;}
-  .tag{font-size:.72rem; font-weight:700; background:var(--accent-soft); color:var(--accent); padding:4px 10px; border-radius:20px; letter-spacing:.02em;}
-  .card p{margin:0 0 14px; font-size:.96rem;}
-  .card ul{margin:0 0 14px; padding-left:20px; font-size:.94rem;}
-  .card li{margin-bottom:7px;}
-  .highlight{border-left:3px solid var(--accent); padding:14px 18px; background:var(--code-bg); border-radius:0 10px 10px 0; font-size:.93rem; margin:16px 0;}
-  .highlight b{color:var(--accent);}
-
-  .skills-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:16px;}
-  .skill-card{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 20px;}
-  .skill-card h4{margin:0 0 8px; font-size:.95rem;}
-  .skill-card p{margin:0; font-size:.85rem; color:var(--text-dim);}
-
   footer{padding:48px 0 80px; text-align:center; color:var(--text-dim); font-size:.88rem;}
   footer a{color:var(--accent); text-decoration:none; font-weight:600;}
 
-  @media(max-width:600px){
-    header.hero{padding:64px 0 40px;}
+  @media(max-width:640px){
+    header.hero{padding:60px 0 40px;}
     h1{font-size:1.9rem;}
+    .about-grid{grid-template-columns:1fr;}
     .tl-item{grid-template-columns:1fr; gap:6px;}
   }
 </style>
@@ -98,7 +124,7 @@
       만드는 방식으로 일합니다.
     </p>
     <div class="hero-meta">
-      <span>4년 7개월+ 경력</span>
+      <span>5년+ 경력</span>
       <span>동국대학교 응용통계학과</span>
       <span>ADsP</span>
       <a href="mailto:hclee9@kakao.com">hclee9@kakao.com</a>
@@ -108,46 +134,72 @@
 
 <nav class="toc">
   <div class="wrap">
-    <a href="#about">소개</a>
+    <a href="#keyword">키워드</a>
+    <a href="#about">About</a>
     <a href="#career">경력</a>
-    <a href="#cbt">CBT·채점서비스</a>
-    <a href="#books">도서 기획·편집</a>
-    <a href="#textbook">교과서 개발</a>
-    <a href="#freeacademy">자유아카데미</a>
+    <a href="#projects">프로젝트</a>
     <a href="#skills">스킬</a>
   </div>
 </nav>
 
 <main class="wrap">
 
+  <section id="keyword">
+    <h2><span class="num">01</span>Keyword</h2>
+    <div class="callout"><span class="ico">✅</span>
+      <div><b>편집자에서, 서비스를 만드는 사람으로</b>
+      원고를 다듬고 저자를 관리하는 편집자로 시작했지만, 독자에게 필요한 것이 좋은 책만이
+      아니라는 걸 확인한 뒤로는 영역을 가리지 않습니다. 지금은 책과 함께 그 책으로 공부하는
+      온라인 모의고사(CBT)·자동 채점 서비스까지 직접 만들고 있습니다.</div>
+    </div>
+    <div class="callout"><span class="ico">✅</span>
+      <div><b>끝까지 검증하는 습관</b>
+      원고를 여러 교(校)에 걸쳐 검수하던 편집자의 습관을 서비스 품질에도 그대로 적용합니다.
+      채점 정확도가 0%였던 자동 채점기를 코드 단위로 분석해 버그 6건을 규명하고,
+      개선안을 반영해 정확도를 90% 이상으로 끌어올렸습니다.</div>
+    </div>
+    <div class="callout"><span class="ico">✅</span>
+      <div><b>시스템으로 규모를 감당하는 사람</b>
+      기획부터 리파인까지 출간 전 과정을 표준 프로세스로 문서화해, 20종이 넘는
+      수험서 라인업을 동시에 관리합니다. 기록과 문서를 협업의 기준으로 삼아
+      이해관계자가 많은 프로젝트에서도 혼선 없이 일합니다.</div>
+    </div>
+  </section>
+
   <section id="about">
-    <h2><span class="num">01</span>편집자에서, 서비스를 만드는 사람으로</h2>
-    <p>
-      골든래빗에 IT 수험서 기획 편집자로 입사했을 때, 제 일은 원고를 다듬고 저자를 관리하는
-      것이라고 생각했습니다. 그런데 입사 8개월 만에 저는 ADsP, SQLD, 리눅스마스터 2급 등
-      6종의 책을 출간했을 뿐 아니라, 그 책들을 산 독자가 실제로 쓰는 온라인 모의고사(CBT)와
-      자동 채점 서비스를 기획하고 개발까지 담당하고 있습니다. &ldquo;편집자가 왜 개발을?&rdquo;이라는
-      질문을 스스로에게 많이 던졌지만, 결국 답은 하나였습니다 — 독자에게 필요한 건 좋은 책만이
-      아니라, 그 책으로 실제 시험을 준비할 수 있는 완결된 경험이라는 것.
-    </p>
-    <p>
-      지금 제가 동시에 관리하는 IT 자격증 수험서는 출간·계약·기획 단계를 합쳐 20종이 넘습니다.
-      이 규모를 감당할 수 있었던 건 특별한 능력보다 시스템 덕분이었습니다. 기획 → 원고 → 조판대조
-      → 1교 → 2교 → 3교 → 리파인로 이어지는 표준 프로세스를 직접 문서화해 모든 책에 동일하게
-      적용했고, 저자 관리·베타테스터 운영·마케팅까지 각 단계를 반복 가능한 흐름으로 만들었습니다.
-    </p>
-    <p>
-      CBT·채점서비스 개발은 AI 코딩 도구를 활용해 진행했습니다. 자동 채점기 품질 검증 과정에서
-      치명적 버그 6건을 직접 규명했고, 개선안을 실제 서비스에 반영해 채점 정확도를 0%에서
-      90% 이상으로 끌어올렸습니다. 편집자로서 원고를 검수하던 습관을 그대로 서비스 코드와
-      데이터 검증에도 적용하고 있습니다.
-    </p>
+    <h2><span class="num">02</span>About Me</h2>
+    <div class="about-grid">
+      <div>
+        <h3>💼 Career</h3>
+        <ul>
+          <li><span class="yr">2025.11 ~</span>골든래빗 수험서기획편집팀 · 대리</li>
+          <li><span class="yr">2022.04 ~ 2025.02</span>(주)와이비엠 편집2국 · 대리</li>
+          <li><span class="yr">2021.01 ~ 2022.04</span>자유아카데미 편집부 · 사원</li>
+          <li><span class="yr">2020.09 ~ 2020.12</span>효성ITX(주) 공공데이터 청년인턴</li>
+        </ul>
+      </div>
+      <div>
+        <h3>🎓 Education · Certificate</h3>
+        <ul>
+          <li><span class="yr">2021.02</span>동국대학교 응용통계학과 졸업</li>
+          <li><span class="yr">2020.12</span>ADsP 데이터분석준전문가</li>
+        </ul>
+      </div>
+      <div style="grid-column:1/-1;">
+        <h3>✍🏻 Used Tool &amp; Skill</h3>
+        <div class="toolrow">
+          <span class="tool">아래아한글</span><span class="tool">Illustrator</span><span class="tool">Photoshop</span>
+          <span class="tool">Excel</span><span class="tool">Google Analytics</span>
+          <span class="tool">Python/Jupyter</span><span class="tool">R Studio</span><span class="tool">SPSS</span><span class="tool">SAS</span>
+          <span class="tool">Claude</span><span class="tool">Codex</span><span class="tool">Next.js</span><span class="tool">Firebase</span>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="career">
-    <h2><span class="num">02</span>경력</h2>
+    <h2><span class="num">03</span>경력</h2>
     <div class="timeline">
-
       <div class="tl-item">
         <div class="tl-date">2025.11 ~<br><span class="now">재직중</span></div>
         <div>
@@ -162,7 +214,6 @@
           </div>
         </div>
       </div>
-
       <div class="tl-item">
         <div class="tl-date">2022.04 ~<br>2025.02</div>
         <div>
@@ -179,7 +230,6 @@
           </div>
         </div>
       </div>
-
       <div class="tl-item">
         <div class="tl-date">2021.01 ~<br>2022.04</div>
         <div>
@@ -187,13 +237,12 @@
           <p class="tl-role">편집부 통계학 서적 편집자 · 사원</p>
           <div class="tl-desc">
             <ul>
-              <li>&lt;기초 통계학&gt;, &lt;실험 설계&gt;, &lt;딥러닝 실습서&gt;, &lt;Montgomery 실험설계 10판&gt; 등 통계·수학·AI 전공서 책임 편집</li>
+              <li>&lt;기초 통계학&gt;, &lt;실험 설계&gt;, &lt;Montgomery 실험설계 10판&gt; 등 통계·수학·AI 전공서 책임 편집</li>
               <li>IT·인공지능 관련 영문 원서 번역본 검수, 출판 계약·인쇄 검수 관리</li>
             </ul>
           </div>
         </div>
       </div>
-
       <div class="tl-item">
         <div class="tl-date">2020.09 ~<br>2020.12</div>
         <div>
@@ -206,214 +255,211 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <section id="cbt">
-    <h2><span class="num">03</span>CBT · 채점서비스 — 기획부터 개발까지</h2>
-    <div class="lead-block">
-      도서 구매자가 책으로 공부한 내용을 실제 시험처럼 확인할 수 있도록, 온라인 모의고사(CBT)와
-      실기 자동 채점 서비스를 기획하고 AI 코딩 도구를 활용해 직접 구현·운영하고 있습니다.
+  <section id="projects">
+    <h2><span class="num">04</span>Career Portfolio</h2>
+    <div class="gallery">
+      <a class="pcard" href="#p-cbt">
+        <div class="pcover">CBT·채점서비스<br>기획부터 개발까지</div>
+        <div class="pbody">
+          <div class="tagrow"><span class="tag">기획</span><span class="tag">개발</span><span class="tag">기여도 100%</span></div>
+          <div class="meta">2025.11 ~ 진행중 · 골든래빗</div>
+        </div>
+      </a>
+      <a class="pcard" href="#p-aice">
+        <div class="pcover c2">AICE 자동 채점기<br>정확도 0% → 90%</div>
+        <div class="pbody">
+          <div class="tagrow"><span class="tag">QA</span><span class="tag">문제 해결</span></div>
+          <div class="meta">2026.06 · 골든래빗</div>
+        </div>
+      </a>
+      <a class="pcard" href="#p-books">
+        <div class="pcover c3">IT 수험서 6종 출간<br>+ 20종 파이프라인</div>
+        <div class="pbody">
+          <div class="tagrow"><span class="tag">책임 편집</span><span class="tag">프로세스 설계</span></div>
+          <div class="meta">2025.11 ~ 진행중 · 골든래빗</div>
+        </div>
+      </a>
+      <a class="pcard" href="#p-datasci">
+        <div class="pcover c4">고등학교 데이터 과학<br>교과서</div>
+        <div class="pbody">
+          <div class="tagrow"><span class="tag">책임 편집</span><span class="tag">기여도 100%</span></div>
+          <div class="meta">2022.04 ~ 2024.01 · 와이비엠</div>
+        </div>
+      </a>
+      <a class="pcard" href="#p-brightics">
+        <div class="pcover c2">Brightics Studio와 함께<br>배우는 데이터 과학</div>
+        <div class="pbody">
+          <div class="tagrow"><span class="tag">편집 기획</span><span class="tag">외주 관리</span></div>
+          <div class="meta">2023.06 ~ 2023.10 · 와이비엠</div>
+        </div>
+      </a>
+      <a class="pcard" href="#p-silgwa">
+        <div class="pcover c3">초등학교 실과(5~6학년)<br>정보 단원</div>
+        <div class="pbody">
+          <div class="tagrow"><span class="tag">교육과정 연구</span><span class="tag">편집 기획</span></div>
+          <div class="meta">2022.10 ~ 2025.02 · 와이비엠</div>
+        </div>
+      </a>
+      <a class="pcard" href="#p-gongmo">
+        <div class="pcover c4">교실혁명 선도교사 연수<br>수행기관 공모</div>
+        <div class="pbody">
+          <div class="tagrow"><span class="tag">공공 사업 제안서</span><span class="tag">기여도 40%</span></div>
+          <div class="meta">2024.05 · 와이비엠</div>
+        </div>
+      </a>
+      <a class="pcard" href="#p-stat">
+        <div class="pcover">통계·수학·AI 전공서<br>책임 편집</div>
+        <div class="pbody">
+          <div class="tagrow"><span class="tag">책임 편집</span><span class="tag">영문 원서</span></div>
+          <div class="meta">2021.01 ~ 2022.04 · 자유아카데미</div>
+        </div>
+      </a>
     </div>
+  </section>
 
-    <div class="card">
-      <h3>사이트 전체 설계</h3>
-      <div class="tagrow"><span class="tag">기획</span><span class="tag">정보구조 설계</span></div>
-      <p>경쟁 서비스를 벤치마킹해 수험서 사이트의 전체 정보 구조(IA)를 설계했습니다. CBT는 이 구조 안의
-      한 섹션이며, 온라인강의·도서구매·CBT·채점서비스·수험정보·후기·고객센터를 아우르는 사이트
-      전체를 기획했습니다.</p>
+  <section id="details">
+    <h2><span class="num">05</span>프로젝트 상세</h2>
+
+    <div class="detail" id="p-cbt">
+      <h3>CBT·채점서비스 — 기획부터 개발까지</h3>
+      <div class="meta">2025.11 ~ 진행중 · 골든래빗 · 기여도 100%</div>
+      <h4>Overview</h4>
+      <p>도서 구매자가 책으로 공부한 내용을 실제 시험처럼 확인할 수 있도록, 온라인 모의고사(CBT)와
+      실기 자동 채점 서비스를 기획하고 AI 코딩 도구를 활용해 직접 구현·운영하고 있습니다.</p>
+      <h4>Role</h4>
       <ul>
+        <li>경쟁 서비스 벤치마킹 → 온라인강의·도서구매·CBT·채점서비스·수험정보·후기·고객센터를 아우르는 사이트 전체 정보구조(IA) 설계</li>
         <li>CBT(객관식 모의고사) 10종 — ADsP, SQLD, 빅데이터분석기사, 워드프로세서, 컴활 1·2급 필기, 정보처리기사, 정보보안기사, 리눅스마스터 2급, 네트워크관리사</li>
         <li>채점서비스(실기·작업형 자동 채점) 4종 — ITQ(한글/엑셀/파워포인트), 워드프로세서 실기, 컴활 실기(엑셀/액세스)</li>
-        <li>각 항목의 기능 요구사항을 직접 정의해 개발 단계로 전달</li>
+        <li>시험 목록·상세·응시 화면의 모바일 대응 전면 재정비 — 페이지마다 제각각이던 기준을 하나의 공용 로직으로 통일</li>
+        <li>응시 결과·오답 분석 화면 개선 — "틀린 문제만 다시 풀기"·"북마크한 문제만 다시 풀기" 원클릭 지원</li>
+        <li>채점 기준 변경 시 과거 응시자 점수를 한 번에 재계산하는 관리자 기능, 카테고리 자동 검증 스크립트, pre-commit lint 도입</li>
       </ul>
+      <h4>Result</h4>
+      <div class="highlight">기획 문서로만 남을 수 있었던 서비스를 <b>실제로 동작하는 웹 플랫폼</b>으로 직접 구현.
+      도서별 무료 체험, 교재 구성에 따라 자동으로 바뀌는 학습 로드맵 등 독자 접점 기능을 계속 확장 중.</div>
+      <p class="backtop"><a href="#projects">▲ 갤러리로 돌아가기</a></p>
     </div>
 
-    <div class="card">
-      <h3>실제 구현 — 사용자 화면</h3>
-      <div class="tagrow"><span class="tag">개발</span><span class="tag">Next.js</span><span class="tag">Firebase</span></div>
-      <ul>
-        <li>시험 목록·상세·응시 화면의 모바일 대응을 전면 재정비 — 페이지마다 제각각이던 기준을 하나의 공용 로직으로 통일</li>
-        <li>응시 결과·오답 분석 화면 개선 — 가장 취약한 과목부터 보여주고, &ldquo;틀린 문제만 다시 풀기&rdquo;·&ldquo;북마크한 문제만 다시 풀기&rdquo;를 원클릭으로 지원</li>
-        <li>도서별 무료 체험 응시 기능 추가 — 배지·안내 노출 및 채점형 시험 누락 버그 수정</li>
-        <li>시험 상세페이지 레이아웃 정비, 교재 구성(1권/2권)에 따라 자동으로 바뀌는 학습 로드맵 안내 추가</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>실제 구현 — 운영 도구</h3>
-      <div class="tagrow"><span class="tag">개발</span><span class="tag">운영 효율화</span></div>
-      <ul>
-        <li>채점 기준 변경 시 과거 응시자 점수를 한 번에 재계산하는 관리자 기능</li>
-        <li>시험이 올바른 카테고리(객관식/코딩실습/채점형)로 분류돼 있는지 자동 점검하는 검증 스크립트</li>
-        <li>커밋 전 코드 오류를 자동으로 잡아주는 품질 관리 장치(pre-commit lint) 도입</li>
-      </ul>
-    </div>
-
-    <div class="card">
+    <div class="detail" id="p-aice">
       <h3>AICE 자동 채점기 — 버그를 찾고 고친 이야기</h3>
-      <div class="tagrow"><span class="tag">QA</span><span class="tag">문제 해결</span></div>
-      <p>AICE ASSOCIATE 자동 채점기 초기 버전을 실제 기출 답안으로 테스트하던 중, 전 문항이
-      0점으로 처리되는 치명적인 버그를 발견했습니다.</p>
-      <div class="highlight">
-        원인을 코드 단위로 추적해 &ldquo;셀 탐지 패턴이 실제 파일 구조와 일치하지 않는&rdquo; 문제임을 진단했고,
-        이후 발견한 문제들을 <b>치명적 버그 6건 · UX 개선 10건</b>으로 정리해 우선순위별(즉시 수정 →
-        기능 추가 → 구조 개선) 로드맵을 세워 실제 서비스에 반영했습니다. 그 결과 답지 기준 채점
-        정확도가 0%에서 90% 이상으로 개선됐습니다. 결과 화면에는 도넛 차트와
-        진행률 바 기반의 대시보드 UI도 새로 적용했습니다.
-      </div>
-      <p>&ldquo;일단 동작하게 만들었다&rdquo;가 아니라 &ldquo;실제 데이터로 검증했더니 이런 문제가 있었다&rdquo;를
-      기록으로 남기고 우선순위를 정해 고치는 방식은, 원고를 여러 교(校)에 걸쳐 검수하던 편집자의
-      습관과 다르지 않았습니다.</p>
-    </div>
-
-    <div class="card">
-      <h3>경쟁 서비스 벤치마킹 → 개선 기획</h3>
-      <div class="tagrow"><span class="tag">기획</span><span class="tag">제안 단계</span></div>
-      <p>유사 교육 플랫폼을 분석해 학습 대시보드(회차별 점수 추이·약점 분석), 용어 학습
-      인터랙티브화, 신뢰 지표 노출, 무료 체험 동선 단순화, AI 대화형 오답 해설 등 5가지 개선안을
-      도출하고 우선순위를 기획했습니다. <em>(제안·설계 단계, 구현 여부는 검증 중)</em></p>
-    </div>
-  </section>
-
-  <section id="books">
-    <h2><span class="num">04</span>IT 수험서 기획·편집</h2>
-    <div class="lead-block">
-      원고 기획부터 저자 관리, 교정, 조판, 베타테스트, 마케팅까지 — 출간의 전체 과정을
-      단독으로 진행하며, 20종 이상의 자격증 수험서 라인업을 동시에 운영하고 있습니다.
-    </div>
-
-    <div class="card">
-      <h3>출간 완료 6종</h3>
-      <div class="tagrow">
-        <span class="tag">ADsP</span><span class="tag">SQLD</span><span class="tag">빅데이터분석기사(필기)</span>
-        <span class="tag">AICE ASSOCIATE</span><span class="tag">리눅스마스터 2급</span><span class="tag">ITQ OA Master</span>
-      </div>
-      <p>입사 후 약 8개월 만에 6종의 자격증 수험서를 기획부터 인쇄까지 진행해 출간했습니다.
-      각 책은 CBT 또는 자동 채점서비스와 연동되어, 구매자가 책 밖에서도 실전 감각을 익힐 수
-      있도록 설계했습니다.</p>
-    </div>
-
-    <div class="card">
-      <h3>출간 전체 프로세스 표준화</h3>
-      <div class="tagrow"><span class="tag">프로세스 설계</span><span class="tag">문서화</span></div>
+      <div class="meta">2026.06 · 골든래빗 · QA / 문제 해결</div>
+      <h4>Overview</h4>
+      <p>AICE ASSOCIATE 자동 채점기 초기 버전을 실제 기출 문제·답안 파일로 테스트하던 중, 정답이
+      포함된 답안조차 전 문항 0점으로 처리되는 치명적인 버그를 발견했습니다.</p>
+      <h4>Role</h4>
       <ul>
-        <li>기획 → 원고 → 조판대조 → 1교 → 2교 → 3교 → 리파인로 이어지는 표준 편집 프로세스를 직접 문서화해 사내 가이드로 정착</li>
+        <li>문제지·답지 파일의 셀 구조를 단위별로 직접 분석해 원인 추적</li>
+        <li>셀 탐지 패턴 불일치, 빈칸형 문제 미인식, 정답 키 누락 등 치명적 버그 6건 규명</li>
+        <li>채점 결과 화면 가독성 등 UX 개선 사항 10건 정리</li>
+        <li>즉시 수정 → 기능 추가 → 구조 개선 3단계 우선순위 로드맵 보고서 작성, 실제 서비스 반영</li>
+      </ul>
+      <h4>Result</h4>
+      <div class="highlight">답지 기준 채점 정확도 <b>0% → 90% 이상</b>. 결과 화면에는 도넛 차트와
+      진행률 바 기반의 대시보드 UI를 새로 적용. "일단 동작하게 만들었다"가 아니라
+      "실제 데이터로 검증했더니 이런 문제가 있었다"를 기록으로 남기고 우선순위를 정해 고치는 방식.</div>
+      <p class="backtop"><a href="#projects">▲ 갤러리로 돌아가기</a></p>
+    </div>
+
+    <div class="detail" id="p-books">
+      <h3>IT 수험서 6종 출간 + 20종 파이프라인</h3>
+      <div class="meta">2025.11 ~ 진행중 · 골든래빗 · 책임 편집 / 프로세스 설계</div>
+      <h4>Overview</h4>
+      <p>입사 후 약 8개월 만에 ADsP, SQLD, 빅데이터분석기사(필기), AICE ASSOCIATE, 리눅스마스터 2급,
+      ITQ OA Master 6종을 기획부터 인쇄까지 진행해 출간했습니다. 각 책은 CBT 또는 자동
+      채점서비스와 연동됩니다.</p>
+      <h4>Role</h4>
+      <ul>
+        <li>기획 → 원고 → 조판대조 → 1교 → 2교 → 3교 → 리파인 표준 편집 프로세스를 직접 문서화해 사내 가이드로 정착</li>
         <li>저자 섭외·요청사항 관리, 원고 피드백 루프, 베타테스터 모집·검토 운영</li>
         <li>마케팅 — 유튜브 크리에이터 협업, 블로그 서평단, SNS 캠페인 기획 및 실행</li>
       </ul>
+      <h4>Result</h4>
+      <div class="highlight">출간 6종 외에 빅데이터분석기사(실기), 컴활 1·2급, 정보처리기사, 정보보안기사,
+      네트워크관리사 1·2급, 워드프로세서, 프로그래밍기능사 등 계약·기획 단계 타이틀 포함
+      <b>전체 라인업 20종 이상 동시 관리</b>.</div>
+      <p class="backtop"><a href="#projects">▲ 갤러리로 돌아가기</a></p>
     </div>
 
-    <div class="card">
-      <h3>파이프라인 규모</h3>
-      <div class="tagrow"><span class="tag">동시 관리 20종+</span></div>
-      <p>출간 완료 6종 외에도 빅데이터분석기사(실기), 컴활 1·2급(필기+실기), 정보처리기사(필기+실기),
-      정보보안기사(필기+실기), 네트워크관리사 1·2급, 워드프로세서, 프로그래밍기능사(필기+실기) 등
-      계약·기획 단계의 타이틀을 동시에 관리하며, 전체 라인업 규모는 20종을 넘습니다.</p>
-    </div>
-  </section>
-
-  <section id="textbook">
-    <h2><span class="num">05</span>교과서 개발 (와이비엠, 2년 11개월)</h2>
-    <div class="lead-block">
-      편집2국 정보과·실과·초등수학콘텐츠과에서 2022 개정 교육과정 교과서 개발에 참여했습니다.
-      신설 교과목 하나를 책임 편집자로 전담하는 동시에, 여러 학교급·교과의 서브 편집과
-      부가 교수학습자료 개발까지 폭넓게 담당했습니다.
-    </div>
-    <div class="card">
+    <div class="detail" id="p-datasci">
       <h3>2022 개정 교육과정 고등학교 &lt;데이터 과학&gt;</h3>
-      <div class="tagrow"><span class="tag">기여도 100%</span><span class="tag">신설 교과목</span></div>
-      <p>신설 교과목 교과서를 책임 편집자로서 기획부터 개발까지 전담했습니다. 교과서 소개 PT 제작,
-      집필진 관리, 홍보 자료 제작까지 편집 외 업무도 함께 맡았습니다. 집필·검토 단계에서
-      학습 흐름 관리 문서를 직접 구축해 팀 내 작업을 효율화했고, 이 체계는 이후 다른 교과서
-      작업(초등 실과) 중간 투입 시에도 그대로 활용되어 전체 일정을 지킬 수 있었습니다.</p>
-    </div>
-    <div class="card">
-      <h3>&lt;Brightics Studio와 함께 배우는 데이터 과학&gt;</h3>
-      <div class="tagrow"><span class="tag">기여도 100%</span><span class="tag">현장 연계 콘텐츠</span></div>
-      <p>학교 현장과 연계한 데이터 과학 실습 단행본을 기획·편집했습니다. 교과서 시장 선점과
-      실무 활용도를 동시에 고려한 부가 콘텐츠 기획 사례입니다.</p>
-    </div>
-    <div class="card">
-      <h3>교수학습자료 · 전자저작물 개발</h3>
-      <div class="tagrow"><span class="tag">부가 콘텐츠</span></div>
+      <div class="meta">2022.04 ~ 2024.01 · 와이비엠 · 책임 편집 · 기여도 100%</div>
+      <h4>Overview</h4>
+      <p>2022 개정 교육과정에 새롭게 도입된 고등학교 데이터 과학 교과서의 책임 편집을 담당해
+      교육과정 분석부터 최종 인정 도서 제출까지 전 과정을 주도적으로 수행했습니다.</p>
+      <h4>Role</h4>
       <ul>
-        <li>2015 개정 교육과정 관련 포트폴리오 양식, 용어사전, 개념 요약집 등 교수학습자료 개발</li>
-        <li>2022 개정 교육과정 교수·학습 자료 및 전자저작물 기획</li>
+        <li>신설 교과목 특성상 철저한 교육과정 분석 및 유사 교과용도서 탐색</li>
+        <li>교과서 체제 구상·내지 디자인 발주, 단원 편제(안)·집필 세목(안) 작성 후 집필진 협의</li>
+        <li>원고 편집·삽화 발주, 삽화·컷·조판소 등 외주 인력 관리</li>
+        <li>지역별 현장 검토·전문 위원 검토 회의 준비, 인정 도서 제출 제반 서류, 지도서·전자저작물 후속 작업</li>
+        <li>교과서 소개 PT·홍보 자료 제작, 집필진 관리</li>
       </ul>
+      <h4>Result</h4>
+      <div class="highlight">집필·검토 단계에서 구축한 <b>학습 흐름 관리 문서</b>는 이후 초등 실과 교과서
+      중간 투입 시에도 그대로 활용돼 전체 일정 준수에 기여.</div>
+      <p class="backtop"><a href="#projects">▲ 갤러리로 돌아가기</a></p>
     </div>
-    <div class="card">
-      <h3>서브 편집 및 개발 참여</h3>
-      <ul>
-        <li>초등학교 실과(5~6학년) 정보 단원 메인 편집 및 저자 관리</li>
-        <li>고등 정보·인공지능 기초, 중학교 정보 서브 편집 및 저자 관리</li>
-        <li>2022 개정 교육과정 초등 수학(5~6학년), 중·고 정보 교과 AIDT 개발 참여</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>다수 이해관계자 협업</h3>
-      <div class="tagrow"><span class="tag">문서 기반 커뮤니케이션</span></div>
-      <p>집필진·디자이너·검토진이 동시에 참여하는 프로젝트에서 업무 요청과 피드백을 문서와
-      기록으로 남겨 팀원 간 혼선을 방지했습니다. 의견이 갈리는 상황에서도 이전 기록을
-      근거로 제시해 빠르게 조율할 수 있었습니다.</p>
-    </div>
-  </section>
 
-  <section id="freeacademy">
-    <h2><span class="num">06</span>자유아카데미 — 통계·수학 전공서 편집 (1년 4개월)</h2>
-    <div class="lead-block">
-      편집자로서 첫 회사입니다. 편집부에서 통계학·수학·인공지능 분야 전공 서적을
-      책임 편집하며 원고 검수와 출판 계약 관리까지 담당했습니다.
+    <div class="detail" id="p-brightics">
+      <h3>&lt;Brightics Studio와 함께 배우는 데이터 과학&gt;</h3>
+      <div class="meta">2023.06 ~ 2023.10 · 와이비엠 · 편집 기획 / 외주 관리 · 기여도 100%</div>
+      <h4>Overview</h4>
+      <p>'Brightics Studio' 학습서의 시장 선점 및 데이터 과학 교과서 홍보를 위한 학교 현장 연계
+      단행본을 기획·편집했습니다. 교과서 시장 선점과 실무 활용도를 동시에 고려한 부가 콘텐츠
+      기획 사례입니다.</p>
+      <p class="backtop"><a href="#projects">▲ 갤러리로 돌아가기</a></p>
     </div>
-    <div class="card">
-      <h3>통계학 전공 서적</h3>
-      <div class="tagrow"><span class="tag">책임 편집</span></div>
-      <p>&lt;기초 통계학&gt;, &lt;실험 설계&gt;, &lt;통계학 개론&gt;, &lt;품질관리&gt;,
-      &lt;탐색적 데이터 분석&gt; 등 통계학과 전공 서적을 책임 편집했습니다.</p>
+
+    <div class="detail" id="p-silgwa">
+      <h3>2022 개정 교육과정 초등학교 실과(5~6학년군)</h3>
+      <div class="meta">2022.10 ~ 2025.02 · 와이비엠 · 교육과정 연구 / 편집 기획</div>
+      <h4>Overview</h4>
+      <p>초등학교 실과 교과서의 정보 파트 메인 편집을 담당했습니다. 저자 관리, 교과목 PT,
+      교수학습자료 및 전자저작물 개발까지 함께 진행했으며, 중·고등 정보·인공지능 기초 서브 편집과
+      정보·수학 교과 AIDT(AI 디지털교과서) 개발에도 참여했습니다.</p>
+      <p class="backtop"><a href="#projects">▲ 갤러리로 돌아가기</a></p>
     </div>
-    <div class="card">
-      <h3>수학 · AI 서적</h3>
-      <div class="tagrow"><span class="tag">책임 편집</span><span class="tag">영문 원서</span></div>
+
+    <div class="detail" id="p-gongmo">
+      <h3>교실혁명 선도교사 양성 연수 수행기관 공모 신청</h3>
+      <div class="meta">2024.05 · 와이비엠 · 공공 사업 제안서 작성 · 기여도 40%</div>
+      <h4>Overview</h4>
+      <p>한국교육학술정보원(KERIS)의 '교실혁명 선도교사 양성 연수 수행기관' 사업 참여를 위한
+      제반 서류 작성 및 발표 자료 제작을 담당했습니다.</p>
+      <p class="backtop"><a href="#projects">▲ 갤러리로 돌아가기</a></p>
+    </div>
+
+    <div class="detail" id="p-stat">
+      <h3>통계·수학·AI 전공서 책임 편집</h3>
+      <div class="meta">2021.01 ~ 2022.04 · 자유아카데미 · 책임 편집</div>
+      <h4>Overview</h4>
+      <p>동국대학교 응용통계학과 전공 지식을 살려 통계·수학·AI 분야 전공 서적을 책임 편집했습니다.
+      원고부터 인쇄 직전 검수까지 출간 전 과정을 담당했습니다.</p>
+      <h4>Role</h4>
       <ul>
-        <li>&lt;통계 수학&gt;, &lt;제약 수학&gt;, &lt;선형대수의 이해&gt; 등 수학 전공서 편집</li>
-        <li>&lt;Stable Baseline을 활용한 강화 학습&gt;, &lt;텐서플로와 케라스를 이용한 딥러닝&gt;
-        등 AI 실습서 편집</li>
-        <li>&lt;Montgomery 실험설계와 분석 제10판&gt; 등 영문 원서 번역본 편집</li>
+        <li>&lt;기초 통계학&gt;, &lt;실험 설계&gt;, &lt;통계학 개론&gt;, &lt;품질관리&gt;, &lt;탐색적 데이터 분석&gt; 등 통계학과 전공 서적 책임 편집</li>
+        <li>&lt;통계 수학&gt;, &lt;제약 수학&gt;, &lt;선형대수의 이해&gt; 등 수학 서적 책임 편집</li>
+        <li>&lt;Stable Baseline을 활용한 강화 학습&gt;, &lt;텐서플로와 케라스를 이용한 딥러닝&gt; 등 AI 실습서 편집</li>
+        <li>&lt;Montgomery 실험설계와 분석 제10판&gt; 등 영문 원서 번역본 편집 — 원문 대조 검수</li>
+        <li>재단·표지·본문 인쇄 상태 검수, 출판 계약서 관리</li>
       </ul>
-    </div>
-    <div class="card">
-      <h3>도서 검수 · 계약 관리</h3>
-      <div class="tagrow"><span class="tag">품질 검수</span></div>
-      <p>출판 전 재단 상태, 표지, 본문 인쇄 상태를 직접 검수했고, 출판 계약서 관리도
-      함께 담당했습니다.</p>
+      <p class="backtop"><a href="#projects">▲ 갤러리로 돌아가기</a></p>
     </div>
   </section>
 
   <section id="skills">
-    <h2><span class="num">07</span>스킬</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h4>기획·편집</h4>
-        <p>도서 기획, 저자 관리, 교정·조판 프로세스 설계, 출판 일정 관리, 프로세스 표준화</p>
-      </div>
-      <div class="skill-card">
-        <h4>서비스 기획 &amp; 개발</h4>
-        <p>정보구조(IA) 설계, 기능 요구사항 정의, AI 코딩 도구 기반 실제 구현, 버그 진단 및 QA</p>
-      </div>
-      <div class="skill-card">
-        <h4>데이터·통계</h4>
-        <p>Python/Jupyter, SPSS, R, SAS — 통계 분석 및 데이터 기반 의사결정</p>
-      </div>
-      <div class="skill-card">
-        <h4>마케팅·커뮤니티 운영</h4>
-        <p>유튜브 크리에이터 협업, 블로그 서평단·베타테스터 프로그램 기획·운영</p>
-      </div>
-      <div class="skill-card">
-        <h4>자격증 · 학력</h4>
-        <p>ADsP(데이터분석 준전문가) · 동국대학교 응용통계학과 졸업</p>
-      </div>
-    </div>
+    <h2><span class="num">06</span>How I Work</h2>
+    <ul style="font-size:.97rem; padding-left:20px;">
+      <li>데이터를 기반으로 한 합리적인 의사 결정을 내립니다.</li>
+      <li>갑작스러운 변동 사항이 생겨도 유연하게 대처합니다.</li>
+      <li>업무 데드라인은 반드시 지킵니다.</li>
+      <li>팀원과 업무를 투명하게 공유하고 팀의 문제는 함께 해결합니다.</li>
+      <li>결과물은 실제 데이터로 끝까지 검증한 뒤에 내놓습니다.</li>
+    </ul>
   </section>
 
 </main>
