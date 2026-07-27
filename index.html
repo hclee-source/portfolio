@@ -41,10 +41,10 @@
   .hero-meta{display:flex; gap:20px; flex-wrap:wrap; margin-top:30px; font-size:.8rem; color:var(--text-dim); font-family:var(--mono); border-top:1px solid var(--border); padding-top:14px;}
   .hero-meta a{color:var(--accent); text-decoration:none; font-weight:600;}
   .hero-meta a:hover{text-decoration:underline;}
-  .hero-flex{display:flex; gap:44px; align-items:flex-start;}
+  .hero-flex{display:flex; gap:48px; align-items:flex-start;}
   .hero-text{flex:1; min-width:0;}
-  .hero-photo{flex:0 0 auto; padding-top:40px;}
-  .hero-photo img{width:164px; height:164px; object-fit:cover; object-position:top; border-radius:3px; border:1px solid var(--border); display:block; filter:saturate(.92);}
+  .hero-photo{flex:0 0 auto;}
+  .hero-photo img{width:172px; height:216px; object-fit:cover; object-position:top; border-radius:2px; border:1px solid var(--border); display:block; filter:saturate(.92);}
 
   nav.toc{position:sticky; top:0; background:color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--border); z-index:10;}
   nav.toc .wrap{display:flex; gap:26px; padding:13px 24px; overflow-x:auto; font-size:.78rem; font-family:var(--mono); letter-spacing:.04em;}
@@ -128,9 +128,8 @@
   @media(max-width:640px){
     header.hero{padding:36px 0 40px;}
     h1{font-size:2rem;}
-    .hero-flex{flex-direction:column-reverse; gap:20px;}
-    .hero-photo{padding-top:0;}
-    .hero-photo img{width:112px; height:112px;}
+    .hero-flex{flex-direction:column-reverse; gap:22px;}
+    .hero-photo img{width:104px; height:132px;}
     .about-grid{grid-template-columns:1fr;}
     .tl-item{grid-template-columns:1fr; gap:6px;}
   }
