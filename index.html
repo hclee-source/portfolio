@@ -155,6 +155,17 @@
   footer a{color:var(--accent); text-decoration:none;}
   footer p{margin:0 0 6px;}
 
+  /* hero entrance */
+  @keyframes rise{from{opacity:0; transform:translateY(26px);} to{opacity:1; transform:none;}}
+  .hero-text > *{animation:rise .7s cubic-bezier(.2,.7,.3,1) both;}
+  .hero-text > *:nth-child(1){animation-delay:.05s;}
+  .hero-text > *:nth-child(2){animation-delay:.15s;}
+  .hero-text > *:nth-child(3){animation-delay:.25s;}
+  .hero-text > *:nth-child(4){animation-delay:.35s;}
+  .hero-text > *:nth-child(5){animation-delay:.45s;}
+  .hero-photo{animation:rise .8s cubic-bezier(.2,.7,.3,1) .35s both;}
+  @media (prefers-reduced-motion: reduce){.hero-text > *,.hero-photo{animation:none;}}
+
   /* scroll reveal */
   .reveal{opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease;}
   .reveal.in{opacity:1; transform:none;}
@@ -254,7 +265,7 @@
       <div>
         <h3>Career</h3>
         <ul>
-          <li><span class="yr">2025.11 ~</span>골든래빗 수험서기획편집팀 · 대리</li>
+          <li><span class="yr">2025.11 ~</span>골든래빗 수험서기획편집팀 · 프로</li>
           <li><span class="yr">2022.04 ~ 2025.02</span>(주)와이비엠 편집2국 · 대리</li>
           <li><span class="yr">2021.01 ~ 2022.04</span>자유아카데미 편집부 · 사원</li>
           <li><span class="yr">2020.09 ~ 2020.12</span>효성ITX(주) 공공데이터 청년인턴</li>
@@ -286,7 +297,7 @@
         <div class="tl-date">2025.11 ~<br><span class="now">재직중</span></div>
         <div>
           <p class="tl-org">(주)골든래빗</p>
-          <p class="tl-role">수험서기획편집팀 · 대리 — IT 수험서 기획·편집 / CBT·채점서비스 기획·개발</p>
+          <p class="tl-role">수험서기획편집팀 · 프로 — IT 수험서 기획·편집 / CBT·채점서비스 기획·개발</p>
           <div class="tl-desc">
             <ul>
               <li>ADsP, SQLD, 빅데이터분석기사(필기), AICE ASSOCIATE, 리눅스마스터 2급, ITQ OA Master 등 6종 출간</li>
@@ -698,6 +709,38 @@ document.documentElement.classList.add('js');
   }
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
+})();
+</script>
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stats = document.querySelectorAll('.stat b');
+  if(reduced || !('IntersectionObserver' in window)) return;
+  function animate(node, from, to, fmt){
+    var t0 = null, dur = 1100;
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      node.nodeValue = fmt(Math.round(from + (to - from) * eased));
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      io.unobserve(e.target);
+      var node = e.target.firstChild;
+      if(!node || node.nodeType !== 3) return;
+      var txt = node.nodeValue.trim();
+      var m = txt.match(/^(\d+)→(\d+)$/);
+      if(m){ animate(node, 0, parseInt(m[2],10), function(v){ return m[1] + '→' + v; }); return; }
+      m = txt.match(/^(\d+)$/);
+      if(m){ animate(node, 0, parseInt(m[1],10), function(v){ return String(v); }); }
+    });
+  }, {threshold:.6});
+  stats.forEach(function(b){ io.observe(b); });
 })();
 </script>
 </body>
