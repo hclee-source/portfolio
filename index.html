@@ -98,6 +98,17 @@
   .tl-desc ul{margin:6px 0 0; padding-left:20px;}
   .tl-desc li{margin-bottom:4px;}
 
+  /* notion-style modal */
+  dialog.pmodal{border:none; border-radius:18px; padding:0; max-width:780px; width:calc(100% - 40px); background:var(--card); color:var(--text); box-shadow:0 24px 80px rgba(0,0,0,.35);}
+  dialog.pmodal::backdrop{background:rgba(0,0,0,.55); backdrop-filter:blur(3px);}
+  .pmodal-bar{display:flex; justify-content:flex-end; padding:12px 14px 0;}
+  .pmodal-close{border:none; background:var(--code-bg); color:var(--text); width:32px; height:32px; border-radius:8px; font-size:1rem; cursor:pointer;}
+  .pmodal-close:hover{background:var(--accent-soft); color:var(--accent);}
+  .pmodal-inner{padding:0 8px 16px; max-height:78vh; overflow-y:auto;}
+  .pmodal-inner .detail{border:none; box-shadow:none; margin:0;}
+  .pmodal .backtop{display:none;}
+  .js #details{display:none;}
+
   footer{padding:48px 0 80px; text-align:center; color:var(--text-dim); font-size:.88rem;}
   footer a{color:var(--accent); text-decoration:none; font-weight:600;}
 
@@ -408,9 +419,20 @@
       <h3>&lt;Brightics Studio와 함께 배우는 데이터 과학&gt;</h3>
       <div class="meta">2023.06 ~ 2023.10 · 와이비엠 · 편집 기획 / 외주 관리 · 기여도 100%</div>
       <h4>Overview</h4>
-      <p>'Brightics Studio' 학습서의 시장 선점 및 데이터 과학 교과서 홍보를 위한 학교 현장 연계
-      단행본을 기획·편집했습니다. 교과서 시장 선점과 실무 활용도를 동시에 고려한 부가 콘텐츠
-      기획 사례입니다.</p>
+      <p>고등학교 &lt;데이터 과학&gt; 교과서의 판매 기여와 홍보를 위해 기획한 단행본입니다.
+      교육용 논코딩 도구로 많이 쓰이는 Orange가 외국산 도구라는 언어적 한계가 있고, 교과용도서에
+      국내 개발 자료 활용이 권장되는 흐름에 맞춰 'Brightics Studio' 학습서 시장을 선점하고자
+      기획했습니다.</p>
+      <h4>Role</h4>
+      <ul>
+        <li>기획안 작성 전담 — 교과서와 연계한 시장성 분석 포함</li>
+        <li>단행본 체제 및 초안 작성 전담</li>
+        <li>외주 편집 인력 관리 — 계약 기간 내 활용 계획 수립, 편집 규칙·디자인 틀 사전 숙지,
+        크로스 체크와 내용 검수, 전체 맥락과 일관성을 고려한 피드백·가이드라인 제시</li>
+      </ul>
+      <h4>Result</h4>
+      <div class="highlight">데이터 과학 교과서 개발과 병행하며 <b>팀 내 첫 단행본</b>을 기획.
+      교과서와 연계된 단행본 기획으로 교육 콘텐츠의 시장성과 실용성을 함께 고려한 사례.</div>
       <p class="backtop"><a href="#projects">▲ 갤러리로 돌아가기</a></p>
     </div>
 
@@ -470,5 +492,40 @@
   </div>
 </footer>
 
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var dlg = document.createElement('dialog');
+  dlg.className = 'pmodal';
+  dlg.innerHTML = '<div class="pmodal-bar"><button class="pmodal-close" aria-label="닫기">✕</button></div><div class="pmodal-inner"></div>';
+  document.body.appendChild(dlg);
+  var inner = dlg.querySelector('.pmodal-inner');
+  var placeholder = document.createElement('div');
+  placeholder.style.display = 'none';
+
+  function restore(){
+    var d = inner.firstElementChild;
+    if(d && placeholder.parentNode){ placeholder.parentNode.insertBefore(d, placeholder); }
+  }
+  function openDetail(id){
+    var d = document.getElementById(id);
+    if(!d) return;
+    restore();
+    d.parentNode.insertBefore(placeholder, d);
+    inner.appendChild(d);
+    inner.scrollTop = 0;
+    dlg.showModal();
+  }
+  document.querySelectorAll('.pcard').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      openDetail(a.getAttribute('href').slice(1));
+    });
+  });
+  dlg.querySelector('.pmodal-close').addEventListener('click', function(){ dlg.close(); });
+  dlg.addEventListener('click', function(e){ if(e.target === dlg) dlg.close(); });
+  dlg.addEventListener('close', restore);
+})();
+</script>
 </body>
 </html>
