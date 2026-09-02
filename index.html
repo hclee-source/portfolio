@@ -28,7 +28,6 @@
     --fs-md:1.05rem;   /* 16.8px 리드·강조 본문 */
     --fs-lg:1.18rem;   /* 18.9px 카드 제목 */
     --fs-xl:1.3rem;    /* 20.8px 소제목 */
-    --fs-2xl:2.4rem;   /* 38.4px 스탯 숫자 */
   }
   @media (prefers-color-scheme: dark){
     :root{
@@ -41,22 +40,20 @@
   body{margin:0; background:var(--bg); color:var(--text);
     font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
     line-height:1.75; -webkit-font-smoothing:antialiased;}
-  h1,h2,.role,.callout h3,.pcover-text,.ptitle,.detail h3,.tl-org,.stat b{font-family:var(--serif); word-break:keep-all;}
+  h1,h2,.role,.callout h3,.pcover-text,.ptitle,.detail h3,.tl-org{font-family:var(--serif); word-break:keep-all;}
   .wrap{max-width:1060px; margin:0 auto; padding:0 28px;}
 
   /* nav */
   nav.toc{position:sticky; top:0; background:color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); z-index:20;}
   nav.toc .wrap{display:flex; align-items:center; gap:26px; padding:15px 28px; overflow-x:auto;}
   nav.toc a{color:var(--text-dim); text-decoration:none; white-space:nowrap; font-size:var(--fs-sm); font-weight:500;}
-  /* .brand만 쓰면 nav.toc a(구체성이 더 높음)에 크기·색이 덮여 작은 회색으로 렌더된다 */
-  nav.toc .brand{font-family:var(--serif); font-weight:700; font-size:var(--fs-md); color:var(--text); margin-right:auto; letter-spacing:-.01em;}
   nav.toc a:hover{color:var(--text);}
   nav.toc a.active{color:var(--text); box-shadow:inset 0 -2px 0 var(--accent); padding-bottom:2px;}
-  nav.toc a.cta-link{color:var(--bg); background:var(--text); padding:8px 18px; border-radius:999px; font-weight:600; font-size:var(--fs-sm); transition:background .2s ease, color .2s ease, transform .12s ease;}
+  nav.toc a.cta-link{margin-left:auto; color:var(--bg); background:var(--text); padding:8px 18px; border-radius:999px; font-weight:600; font-size:var(--fs-sm); transition:background .2s ease, color .2s ease, transform .12s ease;}
   nav.toc a.cta-link:hover{background:var(--accent); color:#fff;}
 
   /* hero */
-  header.hero{padding:104px 0 96px;}
+  header.hero{padding:104px 0 64px;}
   .hero-flex{display:grid; grid-template-columns:minmax(0,1fr) 300px; column-gap:76px; align-items:center;}
   .kicker{color:var(--accent); font-size:var(--fs-xs); letter-spacing:.3em; text-transform:uppercase; font-family:var(--mono); margin-bottom:28px;}
   h1{font-size:clamp(3rem,7vw,4.6rem); line-height:1.06; margin:0 0 26px; letter-spacing:-0.02em; font-weight:700;}
@@ -68,13 +65,9 @@
   .hero-meta a:hover{border-color:var(--accent);}
   .hero-photo img{width:100%; aspect-ratio:4/5; object-fit:cover; object-position:top; display:block; border-radius:4px; filter:saturate(.94);}
 
-  /* stats band */
-  .stats{border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--bg-alt);}
-  .stats .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:28px; padding:46px 28px;}
-  .stat b{display:block; font-size:var(--fs-2xl); font-weight:700; line-height:1.1; letter-spacing:-0.01em;}
-  .stat b small{font-size:var(--fs-lg); font-weight:600; margin-left:2px;}
-  .stat span{font-size:var(--fs-xs); color:var(--text-dim); font-family:var(--mono);}
-
+  /* 스탯 밴드를 걷어낸 자리. 첫 섹션은 'section + section'에 안 걸리므로
+     main에 직접 괘선을 줘 히어로와 본문 경계를 만든다 */
+  main{border-top:1px solid var(--border);}
   section{padding:104px 0;}
   main section + section{border-top:1px solid var(--border);}
   h2{font-size:clamp(1.7rem,3.4vw,2.25rem); margin:0 0 46px; letter-spacing:-0.015em; font-weight:600; line-height:1.3;}
@@ -183,7 +176,7 @@
   .pmodal-close:active{transform:scale(.94);}
 
   /* 숫자 폭 고정 — 스탯·연도·기간이 자릿수에 따라 흔들리지 않게 */
-  .stat b,.tl-date,.meta,.about-grid .yr,.hero-meta,footer{font-variant-numeric:tabular-nums;}
+  .tl-date,.meta,.about-grid .yr,.hero-meta,footer{font-variant-numeric:tabular-nums;}
 
   /* 고아 단어 방지 — 제목은 줄 길이를 고르게, 본문은 마지막 줄 홀로 남김 방지 */
   h2,.role,.ptitle,.detail h3,.tl-org,#skills li h3{text-wrap:balance;}
@@ -206,10 +199,9 @@
   @media (prefers-reduced-motion: reduce){.reveal{opacity:1; transform:none; transition:none;}}
 
   @media(max-width:760px){
-    header.hero{padding:56px 0 56px;}
+    header.hero{padding:56px 0 40px;}
     .hero-flex{grid-template-columns:1fr; row-gap:40px;}
     .hero-photo{max-width:220px;}
-    .stats .wrap{grid-template-columns:repeat(2,1fr); padding:34px 28px;}
     .callouts{grid-template-columns:1fr; gap:30px;}
     .about-grid{grid-template-columns:1fr;}
     .gallery{grid-template-columns:1fr; gap:44px;}
@@ -222,7 +214,7 @@
      (가로 스크롤 안에 밀려 들어가면 연락처 버튼이 화면 밖으로 사라진다) */
   @media(max-width:600px){
     nav.toc .wrap{gap:16px; overflow-x:visible;}
-    nav.toc a:not(.brand):not(.cta-link){display:none;}
+    nav.toc a:not(.cta-link){display:none;}
   }
 </style>
 </head>
@@ -231,7 +223,6 @@
 
 <nav class="toc">
   <div class="wrap">
-    <a class="brand" href="#">이희창</a>
     <a href="#keyword">키워드</a>
     <a href="#about">소개</a>
     <a href="#career">경력</a>
@@ -267,15 +258,6 @@
   </div>
 </header>
 
-<div class="stats">
-  <div class="wrap">
-    <div class="stat"><b>10<small>종</small></b><span>2026년 IT 수험서 기획·편집 담당</span></div>
-    <div class="stat"><b>15<small>%</small></b><span>FAQ 문서화로 교정 시간 단축</span></div>
-    <div class="stat"><b>0→90<small>%</small></b><span>채점 정확도 개선</span></div>
-    <div class="stat"><b>14<small>종</small></b><span>CBT·채점서비스 설계</span></div>
-  </div>
-</div>
-
 <main class="wrap" id="main">
 
   <section id="keyword">
@@ -288,7 +270,7 @@
       기획해 직접 개발했습니다. 개발 경험 없이 시작했지만, "독자에게 필요한가"를 기준으로
       삼으면 편집과 개발 사이에 선을 그을 이유가 없었습니다.</div>
     </div>
-    <div class="callout"><div><h3>채점 정확도 0% → 90%,<br>원인은 코드 단위로 추적</h3>
+    <div class="callout"><div><h3>채점 정확도 30% → 95%,<br>원인은 코드 단위로 추적</h3>
       전 문항이 0점 처리되는 자동 채점기를 보고 "이상하다"에서 멈추지 않았습니다.
       파일의 셀 구조를 하나하나 분석해 버그 6건을 규명하고, 우선순위 로드맵을 세워
       실제 서비스에 반영했습니다. 원고를 여러 교(校)에 걸쳐 검수하던 편집자의 습관은
@@ -457,7 +439,7 @@
       <a class="pcard" href="#p-aice">
         <div class="pcover"><img src="img/cover-aice.webp" alt="AICE 코딩 실습 응시 화면" loading="lazy"></div>
         <div class="pbody">
-          <p class="ptitle"><span class="pnum">No. 08</span>AICE 자동 채점기 정확도 0% → 90%</p>
+          <p class="ptitle"><span class="pnum">No. 08</span>AICE 자동 채점기 정확도 30% → 95%</p>
           <div class="tagrow"><span class="tag">QA</span><span class="tag">문제 해결</span></div>
           <div class="meta">2026.06 · 골든래빗</div>
         </div>
@@ -664,7 +646,7 @@
         <li>즉시 수정 → 기능 추가 → 구조 개선 3단계 우선순위 로드맵 보고서 작성, 실제 서비스 반영</li>
       </ul>
       <h4>Result</h4>
-      <div class="highlight">답지 기준 채점 정확도 <b>0% → 90% 이상</b>. 결과 화면에는 도넛 차트와
+      <div class="highlight">답지 기준 채점 정확도 <b>30% → 95%</b>. 결과 화면에는 도넛 차트와
       진행률 바 기반의 대시보드 UI를 새로 적용. "일단 동작하게 만들었다"가 아니라
       "실제 데이터로 검증했더니 이런 문제가 있었다"를 기록으로 남기고 우선순위를 정해 고치는 방식.</div>
       <img src="img/aice-1.webp" alt="브라우저 안에 Python 실행 환경을 설치하는 시험 준비 화면" loading="lazy">
