@@ -21,7 +21,7 @@
 <style>
   :root{
     --bg:#ffffff; --bg-alt:#f6f6f4; --text:#131312; --text-dim:#6d6d68;
-    --accent:#b3271a; --border:#e6e6e2; --card:#ffffff; --code-bg:#f6f6f4;
+    --accent:#b3271a; --accent-fill:#b3271a; --border:#e6e6e2; --card:#ffffff; --code-bg:#f6f6f4;
     --serif:'Noto Serif KR','Apple SD Gothic Neo',serif;
     --mono:ui-monospace,'SF Mono','Cascadia Code',Consolas,monospace;
     /* 타입 스케일 — 크기는 반드시 이 안에서만 고른다(최소 12px) */
@@ -35,7 +35,7 @@
   @media (prefers-color-scheme: dark){
     :root{
       --bg:#101010; --bg-alt:#181817; --text:#ececea; --text-dim:#9a9a95;
-      --accent:#f05540; --border:#2a2a28; --card:#161615; --code-bg:#1d1d1c;
+      --accent:#f05540; --accent-fill:#b3271a; --border:#2a2a28; --card:#161615; --code-bg:#1d1d1c;
     }
   }
   *{box-sizing:border-box;}
@@ -53,7 +53,7 @@
   nav.toc a:hover{color:var(--text);}
   nav.toc a.active{color:var(--text); box-shadow:inset 0 -2px 0 var(--accent); padding-bottom:2px;}
   nav.toc a.cta-link{margin-left:auto; color:var(--bg); background:var(--text); padding:8px 18px; border-radius:999px; font-weight:600; font-size:var(--fs-sm); transition:background .2s ease, color .2s ease, transform .12s ease;}
-  nav.toc a.cta-link:hover{background:var(--accent); color:#fff;}
+  nav.toc a.cta-link:hover{background:var(--accent-fill); color:#fff;}
 
   /* hero */
   header.hero{padding:104px 0 64px;}
@@ -158,7 +158,7 @@
   .cta h2{margin:0 0 14px; font-size:clamp(1.9rem,4vw,2.6rem);}
   .cta p{color:var(--text-dim); margin:0 0 32px;}
   .cta a.btn{display:inline-block; background:var(--text); color:var(--bg); text-decoration:none; padding:15px 36px; border-radius:999px; font-weight:600; transition:background .2s ease, transform .12s ease;}
-  .cta a.btn:hover{background:var(--accent); color:#fff;}
+  .cta a.btn:hover{background:var(--accent-fill); color:#fff;}
   footer{padding:34px 0 56px; text-align:center; color:var(--text-dim); font-size:var(--fs-xs); font-family:var(--mono);}
   footer a{color:var(--accent); text-decoration:none;}
   footer p{margin:0 0 6px;}
@@ -184,6 +184,8 @@
   /* 고아 단어 방지 — 제목은 줄 길이를 고르게, 본문은 마지막 줄 홀로 남김 방지 */
   h2,.role,.ptitle,.detail h3,.tl-org,#skills li h3{text-wrap:balance;}
   p,li,.imgcap{text-wrap:pretty;}
+  /* 한글 본문은 단어 중간에서 끊지 않는다. 긴 영문·URL만 overflow-wrap으로 예외 처리 */
+  p,li,.callout,.detail,#skills li span,.tl-desc{word-break:keep-all; overflow-wrap:break-word;}
 
   /* hero entrance */
   @keyframes rise{from{opacity:0; transform:translateY(26px);} to{opacity:1; transform:none;}}
@@ -203,6 +205,7 @@
 
   @media(max-width:760px){
     header.hero{padding:56px 0 40px;}
+    .role br{display:none;}
     .hero-flex{grid-template-columns:1fr; row-gap:40px;}
     .hero-photo{max-width:220px;}
     .callouts{grid-template-columns:1fr; gap:30px;}
@@ -241,7 +244,7 @@
       <div class="hero-text">
         <div class="kicker">Editor &amp; Service Builder</div>
         <h1>이희창</h1>
-        <p class="role">책을 만들고, 그 책을 산 독자가<br>실제 시험처럼 연습하는 서비스까지 만듭니다.</p>
+        <p class="role">책을 만들고, 그 책을 산 독자가<br> 실제 시험처럼 연습하는 서비스까지 만듭니다.</p>
         <p class="pitch">
           통계학을 전공하고 출판 현장에 들어와, 통계·수학 전공서에서 교과서로, 교과서에서
           수험서로 영역을 넓혀 온 5년 차 편집자입니다. 신설 교과목 교과서의 책임 편집부터
